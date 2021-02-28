@@ -1,0 +1,68 @@
+
+
+
+
+
+
+<!doctype html>
+<html lang="en">
+{% load static %}
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Nick Walter</title>
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  </head>
+
+  <body>
+
+    <main role="main">
+
+      <section class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading">Nick Walter</h1>
+          <p class="lead text-muted">I love programming and Django in particular!</p>
+          <p>
+            <a href="mailto:nick@zappycode.com" class="btn btn-primary my-2">Email Me</a>
+          </p>
+          <img src="{% static 'nick.jpg' %}" height="300" />
+        </div>
+      </section>
+
+      <div class="album py-5 bg-light">
+        <div class="container">
+
+          <div class="row">
+            {% for job in jobs.all %}
+
+            <div class="col-md-4">
+              <a href="{% url 'detail' job.id %}">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" src="{{ job.image.url }}">
+                <div class="card-body">
+                  <p class="card-text">{{ job.summary }}</p>
+                </div>
+              </div>
+              </a>
+            </div>
+
+            {% endfor %}
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{% static 'js/bootstrap.js' %}" ></script>
+    <script src="{% static 'jquery-3.3.1.min.js' %}" ></script>
+  </body>
+</html>
